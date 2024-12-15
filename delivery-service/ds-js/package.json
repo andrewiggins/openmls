@@ -1,33 +1,39 @@
 {
-	"name": "ds-js",
-	"type": "module",
-	"version": "0.0.1",
-	"description": "A proof-of-concept for an MLS delivery service written in JavaScript that can be used for testing.",
-	"main": "src/index.js",
-	"scripts": {
-		"start": "tsx watch src/index.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/andrewiggins/openmls.git"
-	},
-	"keywords": [
-		"mls",
-		"openmls"
-	],
-	"author": "Andre Wiggins",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/andrewiggins/openmls/issues"
-	},
-	"homepage": "https://github.com/andrewiggins/openmls#readme",
-	"dependencies": {
-		"@hono/node-server": "^1.13.7",
-		"hono": "^4.6.14"
-	},
-	"devDependencies": {
-		"@types/node": "^20.11.17",
-		"tsx": "^4.7.1"
-	}
+  "name": "ds-js",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "A proof-of-concept for an MLS delivery service written in JavaScript that can be used for testing.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run tsc && npm run check-format",
+    "tsc": "tsc -p tsconfig.json",
+    "check-format": "prettier --no-error-on-unmatched-pattern --check **/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}",
+    "format": "prettier --no-error-on-unmatched-pattern --write **/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewiggins/openmls.git"
+  },
+  "keywords": [
+    "mls",
+    "openmls"
+  ],
+  "author": "Andre Wiggins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewiggins/openmls/issues"
+  },
+  "homepage": "https://github.com/andrewiggins/openmls#readme",
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "hono": "^4.6.14"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "prettier": "^3.4.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.7.2"
+  }
 }
