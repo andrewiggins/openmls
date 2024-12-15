@@ -96,6 +96,7 @@ impl User {
 
     pub fn load(user_name: String) -> Result<Self, String> {
         let input_path = User::get_file_path(&user_name);
+        log::debug!("Loading user state from {:?}", input_path);
 
         match File::open(input_path) {
             Err(e) => {
@@ -143,6 +144,7 @@ impl User {
 
     pub fn save(&mut self) {
         let output_path = User::get_file_path(&self.identity.borrow().identity_as_string());
+        log::debug!("Saving user state to {:?}", output_path);
         match File::create(output_path) {
             Err(e) => log::error!("Error saving user state: {:?}", e.to_string()),
             Ok(output_file) => {

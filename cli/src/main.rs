@@ -46,7 +46,9 @@ fn update(client: &mut user::User, group_id: Option<String>, stdout: &mut Stdout
 }
 
 fn main() {
+    // Enable logging with RUST_LOG=debug
     pretty_env_logger::init();
+    log::debug!("Starting OpenMLS CLI with debug logging");
 
     let stdout = stdout();
     let mut stdout = stdout.lock();
