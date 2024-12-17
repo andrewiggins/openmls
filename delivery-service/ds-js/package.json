@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "tsx watch src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "uvu -r tsx/cjs tests",
     "lint": "npm run tsc && npm run check-format",
     "tsc": "tsc -p tsconfig.json",
     "check-format": "prettier --no-error-on-unmatched-pattern --check **/*.{js,jsx,ts,tsx,css,md,html,yml,yaml,json}",
@@ -34,6 +34,7 @@
     "@types/node": "^20.11.17",
     "prettier": "^3.4.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "uvu": "^0.5.6"
   }
 }

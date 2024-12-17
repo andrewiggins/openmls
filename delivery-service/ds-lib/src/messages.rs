@@ -24,7 +24,7 @@ impl AuthToken {
     }
 }
 
-#[derive(Debug, Clone, TlsSize, TlsSerialize, TlsDeserialize)]
+#[derive(Debug, Clone, TlsSize, TlsSerialize, TlsDeserialize, Serialize, Deserialize)]
 pub struct RegisterClientRequest {
     pub key_packages: ClientKeyPackages,
 }
