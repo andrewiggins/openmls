@@ -35,7 +35,6 @@ use clap::Command;
 use futures_util::StreamExt;
 use std::collections::HashMap;
 use std::sync::Mutex;
-use tls_codec::{Deserialize, Serialize, TlsSliceU16, TlsVecU32};
 
 use ds_lib::{
     messages::{
@@ -44,7 +43,10 @@ use ds_lib::{
     },
     *,
 };
-use openmls::prelude::*;
+use openmls::prelude::{
+    tls_codec::{Deserialize, Serialize, TlsSliceU16, TlsVecU32},
+    MlsMessageIn, ProtocolMessage,
+};
 
 #[cfg(test)]
 mod test;
@@ -97,6 +99,11 @@ async fn register_client(mut body: Payload, data: web::Data<DsData>) -> impl Res
             return actix_web::HttpResponse::BadRequest().finish();
         }
     };
+
+    log::trace!(
+        "Registering client: {}",
+        serde_json::to_string_pretty(&req).unwrap()
+    );
 
     if req.key_packages.0.is_empty() {
         log::error!("Invalid payload for /clients/register: no key packages");

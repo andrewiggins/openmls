@@ -13,7 +13,7 @@ use openmls_basic_credential::SignatureKeyPair;
 use openmls_rust_crypto::OpenMlsRustCrypto;
 use openmls_traits::{types::Ciphersuite, OpenMlsProvider};
 use tls_codec::{Deserialize, Serialize};
-use wasm_bindgen::prelude::*;
+use wasm_bindgen::prelude::{wasm_bindgen, JsError};
 
 #[wasm_bindgen]
 extern "C" {
@@ -349,6 +349,8 @@ fn mls_message_to_u8vec(msg: &MlsMessageOut) -> Vec<u8> {
 
 #[cfg(test)]
 mod tests {
+    use wasm_bindgen::JsValue;
+
     use super::*;
 
     fn js_error_to_string(e: JsError) -> String {
